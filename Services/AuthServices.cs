@@ -120,7 +120,7 @@ namespace ta.Services
                 new Claim(JwtRegisteredClaimNames.Jti, jti),
             };
 
-            var keyBytes = Encoding.UTF8.GetBytes(key);
+            var keyBytes = Convert.FromBase64String(key);
             var creds = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256);
 
             var expires = DateTime.UtcNow.AddMinutes(expireMinutes);
